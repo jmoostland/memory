@@ -6,10 +6,69 @@
         <title></title>
 
         <script>
+            var photo1 = false;
+            var photo2 = false;
+            var photo2num = 0;
+            var photo1num = 0;
+            var photo1ind = 0;
+            var photo2ind = 0;
             function changePhoto(d) {
-               
-                document.getElementById('id11').src = 'images/panda.jpg';
+
+                var numbers = [100, 16, 14, 8, 3, 5, 9, 10, 1, 2, 4, 6, 11, 7, 15, 12, 13];
+
+                if (photo1 == false)
+                {
+                    photo1 = true;
+                    photo1num = numbers[d];
+                    photo1ind = d;
+                    
+                    console.log(photo1);
+                    console.log(photo1num);
+                    console.log(photo1ind);
+                    document.getElementById(d).src = 'images/' + d + '.jpg';
+                } else
+                {
+                    if (photo2 == false)
+                    {
+                        document.getElementById(d).src = 'images/' + d + '.jpg';
+                        photo2 = true;
+                        photo2num = numbers[d];
+                        photo2ind = d;
+                        
+                        console.log(photo1);
+                        console.log(photo1num);
+                        console.log(photo1ind);
+                    }
+                }
+
+                if (photo1 == true && photo2 == true)
+                {
+                    if (Math.abs(photo1num - photo2num) == 8)
+                    {
+                        console.log("Match");
+                        photo1 = false;
+                        photo2 = false;
+                        photo2num = 0;
+                        photo1num = 0;
+                        photo1ind = 0;
+                        photo2ind = 0;
+                    } else
+                    {
+                        document.getElementById(photo1ind).src = 'images/memory.jpg';
+                        document.getElementById(photo2ind).src = 'images/memory.jpg';
+                        photo1 = false;
+                        photo2 = false;
+                        photo2num = 0;
+                        photo1num = 0;
+                        photo1ind = 0;
+                        photo2ind = 0;
+                    }
+                }
+                
+
             }
+
+
 
         </script>
 
@@ -36,11 +95,12 @@
         <div>
             <table border="1">
                 <?php
+                $counter = 0;
                 for ($row = 1; $row < 5; $row++) {
                     echo "<tr>";
                     for ($kolom = 1; $kolom < 5; $kolom++) {
-                        $id="id".$row.$kolom;
-                        echo "<td><img id=$id src=images/memory.jpg alt= Error onclick=changePhoto('$id')></td>\n";
+                        ++$counter;
+                        echo "<td><img id=$counter src=images/memory.jpg alt= Error onclick=changePhoto('$counter')></td>\n";
                     }
                     echo "</tr>";
                 }
