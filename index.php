@@ -7,8 +7,8 @@
 
         <script>
             function changePhoto(d) {
-                
-                document.getElementById('d').src = '/images/tiger.jpg';
+               
+                document.getElementById('id11').src = 'images/panda.jpg';
             }
 
         </script>
@@ -36,11 +36,11 @@
         <div>
             <table border="1">
                 <?php
-                for ($row = 0; $row <= 4; $row++) {
+                for ($row = 1; $row < 5; $row++) {
                     echo "<tr>";
-                    for ($kolom = 0; $kolom <= 4; $kolom++) {
+                    for ($kolom = 1; $kolom < 5; $kolom++) {
                         $id="id".$row.$kolom;
-                        echo "<td><img id=$id src=images/memory.jpg onclick=changePhoto($id)></td>";
+                        echo "<td><img id=$id src=images/memory.jpg alt= Error onclick=changePhoto('$id')></td>\n";
                     }
                     echo "</tr>";
                 }
