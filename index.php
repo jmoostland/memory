@@ -12,64 +12,52 @@
             var photo1num = 0;
             var photo1ind = 0;
             var photo2ind = 0;
-            function changePhoto(d) {
-
-                var numbers = [100, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-
+            var numbers = [100, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+            
+            function changePhoto(d)
+            {
                 if (photo1 == false)
                 {
                     photo1 = true;
                     photo1num = numbers[d];
                     photo1ind = d;
-                    
-                    console.log(photo1);
-                    console.log(photo1num);
-                    console.log(photo1ind);
                     document.getElementById(d).src = 'images/' + d + '.jpg';
                 } else
                 {
                     if (photo2 == false)
                     {
-                        document.getElementById(d).src = 'images/' + d + '.jpg';
                         photo2 = true;
                         photo2num = numbers[d];
                         photo2ind = d;
-                        
-                        console.log(photo2);
-                        console.log(photo2num);
-                        console.log(photo2ind);
+                        document.getElementById(d).src = 'images/' + d + '.jpg';
+                       
                     }
                 }
 
                 if (photo1 == true && photo2 == true)
                 {
-                    console.log(photo1,photo2);
-                    console.log(photo1num,photo2num);
-                    console.log(Math.abs(photo1num - photo2num));
                     if (Math.abs(photo1num - photo2num) == 8)
                     {
-                        
-                        console.log("Match");
-                        photo1 = false;
-                        photo2 = false;
-                        photo2num = 0;
-                        photo1num = 0;
-                        photo1ind = 0;
-                        photo2ind = 0;
+                        reset();
                     } else
                     {
                         document.getElementById(photo1ind).src = 'images/memory.jpg';
                         document.getElementById(photo2ind).src = 'images/memory.jpg';
-                        photo1 = false;
-                        photo2 = false;
-                        photo2num = 0;
-                        photo1num = 0;
-                        photo1ind = 0;
-                        photo2ind = 0;
+                        reset();
+
                     }
                 }
-                
 
+            }
+            
+            function reset()
+            {
+                photo1 = false;
+                photo2 = false;
+                photo2num = 0;
+                photo1num = 0;
+                photo1ind = 0;
+                photo2ind = 0;
             }
 
 
